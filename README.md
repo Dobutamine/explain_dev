@@ -22,9 +22,9 @@ Make a directory where you want to put the explain application.<br>
   Change directory to the newly created folder with command.<br>
    <i>cd projects</i><br>
   Clone the GitHub Explain project with command<br>
-    <i>git clone https://github.com/Dobutamine/explain.git</i><br>
+    <i>git clone https://github.com/Dobutamine/explain_dev.git</i><br>
   Navigate into the explain directory with command<br>
-    <i>cd explain</i><br>
+    <i>cd explain_dev</i><br>
   Update the dependencies with command<br>
     <i>yarn</i><br>
 <br>
