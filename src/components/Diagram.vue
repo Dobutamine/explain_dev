@@ -19,6 +19,7 @@
                   { label: 'morphing', value: 3 },
                   { label: 'sizing', value: 4 }]"
                 />
+                <q-checkbox v-model="skeletonState" @input="toggleSkeletonGraph" size="sm" label="skeleton graph"></q-checkbox>
             </div>
   <q-resize-observer @resize="onResize" />
   </q-card>
@@ -48,6 +49,7 @@ export default {
       display: 'block',
       pixiApp: null,
       editingSelection: 0,
+      skeletonState: true,
       stage: {
         width: 0,
         hieght: 0,
@@ -144,9 +146,16 @@ export default {
         this.pixiApp.renderer.view.style.display = this.display
       }
     },
+    toggleSkeletonGraph () {
+      console.log(this.skeletonState)
+      if (this.skeletonState) {
+        this.drawCircle ()
+      } else {
+         this.pixiApp.stage.removeChild(this.skeletonGraphics)
+      }
+    },
     changeEditingMode () {
       this.pixiApp.spriteMode.mode = this.editingSelection
-      console.log(this.pixiApp.spriteMode.mode)
     },
     initDiagram () {
       // get the reference to the canvas

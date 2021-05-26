@@ -24,7 +24,10 @@ export default {
       modelEventListener: null,
       parameters: [],
       updateFreq: 1,
-      prevTime: 0
+      prevTime: 0,
+      monitorStorageTime: 60,
+      monitorMemory: [],
+      monitorMemoryTime: 0
     }
   },
   mounted () {
@@ -73,14 +76,32 @@ export default {
       if (data[0].time - this.prevTime > this.updateFreq) {
         this.prevTime = data[0].time
         this.parameters = data[0].Monitor.parameters
+
+        this.monitorMemory.push({ time: data[0].time, data: data[0].Monitor.parameters })
       }
     },
     updateMonitor (data) {
       const size = data.length - 1
+      this.processMonitorMemory(data)
       if (data[size].time - this.prevTime > this.updateFreq) {
         this.prevTime = data[size].time
         this.parameters = data[size].Monitor.parameters
       }
+    },
+    processMonitorMemory (data) {
+      // build monitor memory with 1 second data numericals
+      // check what the stepsize is (mostly 0.015 ms)
+      const duration = (data[data.length - 1].time - data[0].time) / (data.length - 1)
+      // calculate how may times the stepsize fits in 1 seconds
+      const stepper = parseInt(1 / duration)
+      // build the memory array with 1 second steps
+      for (let index = 0; index < data.length - 1; index += stepper) {
+        this.monitorMemory.push({ time: data[index].time, data: data[index].Monitor.parameters })
+      }
+      console.log(this.monitorMemory)
+    },
+    resetMemory () {
+      this.monitorMemory = []
     }
   }
 }
