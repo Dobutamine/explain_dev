@@ -28,8 +28,10 @@
 <script>
 /* eslint-disable */
 import DiagramBloodCompartment from '../classes/DiagramBloodCompartment'
+import DiagramLymphCompartment from '../classes/DiagramLymphCompartment'
 import DiagramGasCompartment from '../classes/DiagramGasCompartment'
 import DiagramBloodConnector from '../classes/DiagramBloodConnector'
+import DiagramLymphConnector from '../classes/DiagramLymphConnector'
 import DiagramGasConnector from '../classes/DiagramGasConnector'
 import * as PIXI from 'pixi.js'
 import DiagramGasExchanger from 'src/classes/DiagramGasExchanger'
@@ -322,6 +324,16 @@ export default {
             this.diagramComponents[e.id].sprite.text.x = e.layout.xSprite * this.stage.width
             this.diagramComponents[e.id].sprite.text.y = e.layout.ySprite * this.stage.height
             break
+          case 'LymphCompartment':
+            this.diagramComponents[e.id] = new DiagramLymphCompartment(e.id, e.label, e.modelComponents, this.pixiApp)
+            this.diagramComponents[e.id].sprite.x = e.layout.xSprite * this.stage.width
+            this.diagramComponents[e.id].sprite.y = e.layout.ySprite * this.stage.height
+            this.diagramComponents[e.id].sprite.rotation = e.layout.rotation
+            this.diagramComponents[e.id].sprite.scalingFactorX = e.layout.xScale
+            this.diagramComponents[e.id].sprite.scalingFactorY = e.layout.yScale
+            this.diagramComponents[e.id].sprite.text.x = e.layout.xSprite * this.stage.width
+            this.diagramComponents[e.id].sprite.text.y = e.layout.ySprite * this.stage.height
+            break
           case 'GasCompartment':
             this.diagramComponents[e.id] = new DiagramGasCompartment(e.id, e.label, e.modelComponents, this.pixiApp)
             this.diagramComponents[e.id].sprite.x = e.layout.xSprite * this.stage.width
@@ -344,6 +356,9 @@ export default {
             break
           case 'BloodConnector':
             this.diagramConnectors[e.id] = new DiagramBloodConnector(e.id, e.label, e.dbcFrom, e.dbcTo, e.modelComponents, this.pixiApp)
+            break
+          case 'LymphConnector':
+            this.diagramConnectors[e.id] = new DiagramLymphConnector(e.id, e.label, e.dbcFrom, e.dbcTo, e.modelComponents, this.pixiApp)
             break
           case 'Valve':
             this.diagramConnectors[e.id] = new DiagramValve(e.id, e.label, e.dbcFrom, e.dbcTo, e.modelComponents, this.pixiApp)

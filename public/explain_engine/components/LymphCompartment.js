@@ -1,6 +1,6 @@
 /* eslint-disable */
 
-class BloodCompartment {
+class LymphCompartment {
   
   // units of the gas compartment
   // pressure in mmHg
@@ -66,7 +66,7 @@ class BloodCompartment {
 
   }
 
-  volIn(dvol, comp_from, mix = true) {
+  volIn(dvol, comp_from, mix = false) {
 
     // add blood from the compartment stored in comp_from
     this.vol += dvol;
@@ -76,11 +76,10 @@ class BloodCompartment {
       this.vol = 0;
     }
 
-    // mix the blood
+    // mix the lymph
     if (mix) {
       this.calcCompoundsConcentrations(dvol, comp_from)
     }
-  
   }
 
 
@@ -117,7 +116,7 @@ class BloodCompartment {
       
       // calculate the new blood compartment composition
       if (!this.initialized) {
-        this._model.components.Blood.initializeBloodCompartment(this)
+        this._model.components.Lymph.initializeLymphCompartment(this)
       }
       
       // calculate the pressure

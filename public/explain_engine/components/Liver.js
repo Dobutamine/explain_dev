@@ -11,5 +11,6 @@ class Liver {
     }
   }
 
-  modelCycle() {}
+  modelCycle() {
+  }
 }

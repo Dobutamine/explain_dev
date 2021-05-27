@@ -83,6 +83,7 @@
              </q-carousel-slide>
              <q-carousel-slide name="trends">
                 <TrendMonitoring></TrendMonitoring>
+                <XYChart chartId="100"></XYChart>
                 <Controller></Controller>
              </q-carousel-slide>
           </q-carousel>
@@ -134,6 +135,7 @@
 <script>
 
 import LightningChart from 'components/LightningChart'
+import XYChart from 'components/XYChart'
 import Controller from 'components/Controller'
 import FileReader from 'components/FileReader'
 import ModelDiagram from 'components/Diagram'
@@ -149,6 +151,7 @@ export default {
   name: 'PageIndex',
   components: {
     LightningChart,
+    XYChart,
     Controller,
     FileReader,
     ModelDiagram,
