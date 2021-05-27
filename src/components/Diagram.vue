@@ -28,7 +28,7 @@
 <script>
 /* eslint-disable */
 import DiagramBloodCompartment from '../classes/DiagramBloodCompartment'
-import DiagramLymphCompartment from '../classes/DiagramLymphCompartment'
+import DiagramLymphangion from '../classes/DiagramLymphangion'
 import DiagramGasCompartment from '../classes/DiagramGasCompartment'
 import DiagramBloodConnector from '../classes/DiagramBloodConnector'
 import DiagramLymphConnector from '../classes/DiagramLymphConnector'
@@ -324,8 +324,8 @@ export default {
             this.diagramComponents[e.id].sprite.text.x = e.layout.xSprite * this.stage.width
             this.diagramComponents[e.id].sprite.text.y = e.layout.ySprite * this.stage.height
             break
-          case 'LymphCompartment':
-            this.diagramComponents[e.id] = new DiagramLymphCompartment(e.id, e.label, e.modelComponents, this.pixiApp)
+          case 'Lymphangion':
+            this.diagramComponents[e.id] = new DiagramLymphangion(e.id, e.label, e.modelComponents, this.pixiApp)
             this.diagramComponents[e.id].sprite.x = e.layout.xSprite * this.stage.width
             this.diagramComponents[e.id].sprite.y = e.layout.ySprite * this.stage.height
             this.diagramComponents[e.id].sprite.rotation = e.layout.rotation

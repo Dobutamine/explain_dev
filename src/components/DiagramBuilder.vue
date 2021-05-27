@@ -469,7 +469,7 @@ export default {
           layout: currentLayout
         }
 
-        if (diagramComponent.type === 'BloodCompartment' | diagramComponent.type === 'Pump' | diagramComponent.type === 'LymphCompartment') {
+        if (diagramComponent.type === 'BloodCompartment' | diagramComponent.type === 'Pump' | diagramComponent.type === 'Lymphangion') {
           this.$root.$emit('add_to_diagram', diagramComponent)
         }
 

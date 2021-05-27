@@ -1171,7 +1171,7 @@
          "name":"LYMPHANGION",
          "description":"lymphangion",
          "type":"component",
-         "subtype":"LymphCompartment",
+         "subtype":"Lymphangion",
          "is_enabled":true,
          "vol":0.005654058574009633,
          "vol_u":0.00113603,

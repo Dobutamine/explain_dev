@@ -1,7 +1,9 @@
 /* eslint-disable */
 
-class LymphCompartment {
+class Lymphangion {
   
+
+  // A lymphangion is the functional unit of a lymph vessel that lies between two semilunar (half moon-shaped) valves.[1] [2]
   // units of the gas compartment
   // pressure in mmHg
   // volume in litres

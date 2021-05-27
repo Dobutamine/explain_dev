@@ -1,7 +1,7 @@
 import * as PIXI from 'pixi.js'
 import explain from '../assets/container.png'
 
-class DiagramLymphCompartment {
+class DiagramLymphangion {
   constructor (id, label, modelComponents, pixiApp) {
     this.id = id
     this.pixiApp = pixiApp
@@ -251,4 +251,4 @@ class DiagramLymphCompartment {
   }
 }
 
-export default DiagramLymphCompartment
+export default DiagramLymphangion
