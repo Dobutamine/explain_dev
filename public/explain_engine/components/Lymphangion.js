@@ -48,7 +48,7 @@ class Lymphangion {
     let nonlin_fac = this.el_k1 * this.el_k1_fac * Math.pow((this.vol - this.vol_u), 2);
     
     // calculate the contraction (=varying elastance) 
-    let el_cont = (this.el_max * this.el_max_fac * this.el_act) 
+    let el_cont = (this.el_max * this.el_max_fac * this.el_act)
 
     // return the sum of all factors
     return el_base + nonlin_fac + el_cont;

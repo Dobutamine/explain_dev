@@ -1400,7 +1400,7 @@
          "type":"component",
          "subtype":"LymphModel",
          "is_enabled":true,
-         "flow": 0.01
+         "flowPercentage": 10
       },
       {
          "name":"Uterus",

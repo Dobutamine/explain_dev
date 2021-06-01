@@ -14,14 +14,27 @@ class LymphModel {
   modelCycle() {
     // stepsize
     const t = this._model.modeling_stepsize
-    // INPUTS -> FLOW is 10 ml/min = 0.01 l/min = 0.00016667 l/sec 
-    const flowInThisStep = this.flow / 60 * t
+
+    let volumeLB = this._model.components.LB.vol     // in liters
+
+    // calculate flow as 10% of lower body
+    let flowInThisStepExp = this.flowPercentage / 100 * volumeLB
 
     // remove volume from lower body and add to lymfangiom
-
     // change the volumes
-    this._model.components.LB.volOut(flowInThisStep)
-    this._model.components.LYMPHANGION.volIn(flowInThisStep, null, false)
+    this._model.components.LB.volOut(flowInThisStepExp)
+
+    this._model.components.LYMPHANGION.volIn(flowInThisStepExp, null, false)
+
+
+    // deze routine wordt elke 0.5 ms aangeroepen, dus weten de tijd
+
+    // el_act moet varieren tussen 0 en 1 afhankelijk van de frequentie die wij willen
+
+
+    // this._model.components.LYMPHANGION.el_act = 
+
+    
 
   }
 }
