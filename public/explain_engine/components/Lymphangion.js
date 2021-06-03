@@ -1,7 +1,9 @@
 /* eslint-disable */
 
-class BloodCompartment {
+class Lymphangion {
   
+
+  // A lymphangion is the functional unit of a lymph vessel that lies between two semilunar (half moon-shaped) valves.[1] [2]
   // units of the gas compartment
   // pressure in mmHg
   // volume in litres
@@ -46,7 +48,7 @@ class BloodCompartment {
     let nonlin_fac = this.el_k1 * this.el_k1_fac * Math.pow((this.vol - this.vol_u), 2);
     
     // calculate the contraction (=varying elastance) 
-    let el_cont = (this.el_max * this.el_max_fac * this.el_act) 
+    let el_cont = (this.el_max * this.el_max_fac * this.el_act)
 
     // return the sum of all factors
     return el_base + nonlin_fac + el_cont;
@@ -66,7 +68,7 @@ class BloodCompartment {
 
   }
 
-  volIn(dvol, comp_from, mix = true) {
+  volIn(dvol, comp_from, mix = false) {
 
     // add blood from the compartment stored in comp_from
     this.vol += dvol;
@@ -76,11 +78,10 @@ class BloodCompartment {
       this.vol = 0;
     }
 
-    // mix the blood
+    // mix the lymph
     if (mix) {
       this.calcCompoundsConcentrations(dvol, comp_from)
     }
-  
   }
 
 
@@ -117,7 +118,7 @@ class BloodCompartment {
       
       // calculate the new blood compartment composition
       if (!this.initialized) {
-        this._model.components.Blood.initializeBloodCompartment(this)
+        this._model.components.Lymph.initializeLymphCompartment(this)
       }
       
       // calculate the pressure

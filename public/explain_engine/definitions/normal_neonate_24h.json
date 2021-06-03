@@ -1168,6 +1168,34 @@
          "dif_other":0.01
       },
       {
+         "name":"LYMPHANGION",
+         "description":"lymphangion",
+         "type":"component",
+         "subtype":"Lymphangion",
+         "is_enabled":true,
+         "vol":0.005654058574009633,
+         "vol_u":0.00113603,
+         "el_min":4398,
+         "el_max":0,
+         "el_k1":0,
+         "el_k2":0
+      },
+      {
+         "name":"LYMPHANGION_VCS",
+         "description":"lymph compartment to vena cava superior",
+         "type":"component",
+         "subtype":"LymphConnector",
+         "is_enabled":true,
+         "no_flow":false,
+         "no_backflow":true,
+         "comp_from":"LYMPHANGION",
+         "comp_to":"VCS",
+         "r_for":5000,
+         "r_back":5000,
+         "r_k1":0,
+         "r_k2":0
+      },
+      {
          "name":"ECG",
          "description":"ecg",
          "type":"component",
@@ -1356,7 +1384,8 @@
          "description":"",
          "type":"component",
          "subtype":"Liver",
-         "is_enabled":false
+         "is_enabled":false,
+         "inflow": 10
       },
       {
          "name":"Placenta",
@@ -1364,6 +1393,14 @@
          "type":"component",
          "subtype":"",
          "is_enabled":false
+      },
+      {
+         "name":"LymphModel",
+         "description":"",
+         "type":"component",
+         "subtype":"LymphModel",
+         "is_enabled":true,
+         "flowPercentage": 10
       },
       {
          "name":"Uterus",
@@ -1437,6 +1474,14 @@
             "sid":41.6,
             "uma":10
          }
+      },
+      {
+         "name":"Lymph",
+         "description":"",
+         "type":"component",
+         "subtype":"Lymph",
+         "is_enabled":true,
+         "compounds":{}
       },
       {
          "name":"Gas",

@@ -51,6 +51,7 @@
                 :options="[
                   { label: 'chart1', value: 'modelchart' },
                   { label: 'chart2', value: 'modelchart2' },
+                  { label: 'trends', value: 'trends' },
                   { label: 'diagram', value: 'diagram' }]"
                 />
             </div>
@@ -65,19 +66,24 @@
             :height="height"
           >
              <q-carousel-slide name="ventilator">
-              <Ventilator></Ventilator>
+                <Ventilator></Ventilator>
                 <Controller></Controller>
              </q-carousel-slide>
              <q-carousel-slide name="modelchart">
-              <LightningChart chartNo="1" ></LightningChart>
+                <LightningChart chartNo="1" ></LightningChart>
                 <Controller></Controller>
              </q-carousel-slide>
              <q-carousel-slide name="modelchart2">
-              <LightningChart chartNo="2" ></LightningChart>
+                <LightningChart chartNo="2" ></LightningChart>
                 <Controller></Controller>
              </q-carousel-slide>
              <q-carousel-slide name="diagram">
-              <ModelDiagram></ModelDiagram>
+                <ModelDiagram></ModelDiagram>
+                <Controller></Controller>
+             </q-carousel-slide>
+             <q-carousel-slide name="trends">
+                <TrendMonitoring></TrendMonitoring>
+                <XYChart chartId="100"></XYChart>
                 <Controller></Controller>
              </q-carousel-slide>
           </q-carousel>
@@ -129,6 +135,7 @@
 <script>
 
 import LightningChart from 'components/LightningChart'
+import XYChart from 'components/XYChart'
 import Controller from 'components/Controller'
 import FileReader from 'components/FileReader'
 import ModelDiagram from 'components/Diagram'
@@ -138,11 +145,13 @@ import ModelProps from 'components/PropertyEditor'
 import Monitoring from 'components/Monitoring'
 import Log from 'components/Log'
 import Inspector from 'components/Inspector'
+import TrendMonitoring from 'components/TrendMonitoring'
 
 export default {
   name: 'PageIndex',
   components: {
     LightningChart,
+    XYChart,
     Controller,
     FileReader,
     ModelDiagram,
@@ -151,7 +160,8 @@ export default {
     ModelProps,
     Monitoring,
     Log,
-    Inspector
+    Inspector,
+    TrendMonitoring
   },
   data () {
     return {

@@ -412,7 +412,7 @@ export default {
           this.currentModelsInDiagram.push(this.selectedModel)
         }
         // check whether this is a connector because then we have to add in the connected compartments also
-        if (this.properties[this.selectedModel].subtype === 'BloodConnector' | this.properties[this.selectedModel].subtype === 'Valve' | this.properties[this.selectedModel].subtype === 'GasConnector') {
+        if (this.properties[this.selectedModel].subtype === 'BloodConnector' | this.properties[this.selectedModel].subtype === 'Valve' | this.properties[this.selectedModel].subtype === 'GasConnector' | this.properties[this.selectedModel].subtype === 'LymphConnector') {
           const compFrom = this.properties[this.selectedModel].comp_from
           const compTo = this.properties[this.selectedModel].comp_to
           if (!this.currentModelsInDiagram.includes(compFrom)) { this.currentModelsInDiagram.push(compFrom) }
@@ -469,7 +469,7 @@ export default {
           layout: currentLayout
         }
 
-        if (diagramComponent.type === 'BloodCompartment' | diagramComponent.type === 'Pump') {
+        if (diagramComponent.type === 'BloodCompartment' | diagramComponent.type === 'Pump' | diagramComponent.type === 'Lymphangion') {
           this.$root.$emit('add_to_diagram', diagramComponent)
         }
 
@@ -478,6 +478,12 @@ export default {
         }
 
         if (diagramComponent.type === 'BloodConnector' | diagramComponent.type === 'Valve') {
+          diagramComponent.dbcFrom = this.properties[model].comp_from
+          diagramComponent.dbcTo = this.properties[model].comp_to
+          this.$root.$emit('add_to_diagram', diagramComponent)
+        }
+
+        if (diagramComponent.type === 'LymphConnector') {
           diagramComponent.dbcFrom = this.properties[model].comp_from
           diagramComponent.dbcTo = this.properties[model].comp_to
           this.$root.$emit('add_to_diagram', diagramComponent)

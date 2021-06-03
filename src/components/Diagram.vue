@@ -19,6 +19,7 @@
                   { label: 'morphing', value: 3 },
                   { label: 'sizing', value: 4 }]"
                 />
+                <q-checkbox v-model="skeletonState" @input="toggleSkeletonGraph" size="sm" label="skeleton graph"></q-checkbox>
             </div>
   <q-resize-observer @resize="onResize" />
   </q-card>
@@ -27,8 +28,10 @@
 <script>
 /* eslint-disable */
 import DiagramBloodCompartment from '../classes/DiagramBloodCompartment'
+import DiagramLymphangion from '../classes/DiagramLymphangion'
 import DiagramGasCompartment from '../classes/DiagramGasCompartment'
 import DiagramBloodConnector from '../classes/DiagramBloodConnector'
+import DiagramLymphConnector from '../classes/DiagramLymphConnector'
 import DiagramGasConnector from '../classes/DiagramGasConnector'
 import * as PIXI from 'pixi.js'
 import DiagramGasExchanger from 'src/classes/DiagramGasExchanger'
@@ -48,6 +51,7 @@ export default {
       display: 'block',
       pixiApp: null,
       editingSelection: 0,
+      skeletonState: true,
       stage: {
         width: 0,
         hieght: 0,
@@ -144,9 +148,16 @@ export default {
         this.pixiApp.renderer.view.style.display = this.display
       }
     },
+    toggleSkeletonGraph () {
+      console.log(this.skeletonState)
+      if (this.skeletonState) {
+        this.drawCircle ()
+      } else {
+         this.pixiApp.stage.removeChild(this.skeletonGraphics)
+      }
+    },
     changeEditingMode () {
       this.pixiApp.spriteMode.mode = this.editingSelection
-      console.log(this.pixiApp.spriteMode.mode)
     },
     initDiagram () {
       // get the reference to the canvas
@@ -313,6 +324,16 @@ export default {
             this.diagramComponents[e.id].sprite.text.x = e.layout.xSprite * this.stage.width
             this.diagramComponents[e.id].sprite.text.y = e.layout.ySprite * this.stage.height
             break
+          case 'Lymphangion':
+            this.diagramComponents[e.id] = new DiagramLymphangion(e.id, e.label, e.modelComponents, this.pixiApp)
+            this.diagramComponents[e.id].sprite.x = e.layout.xSprite * this.stage.width
+            this.diagramComponents[e.id].sprite.y = e.layout.ySprite * this.stage.height
+            this.diagramComponents[e.id].sprite.rotation = e.layout.rotation
+            this.diagramComponents[e.id].sprite.scalingFactorX = e.layout.xScale
+            this.diagramComponents[e.id].sprite.scalingFactorY = e.layout.yScale
+            this.diagramComponents[e.id].sprite.text.x = e.layout.xSprite * this.stage.width
+            this.diagramComponents[e.id].sprite.text.y = e.layout.ySprite * this.stage.height
+            break
           case 'GasCompartment':
             this.diagramComponents[e.id] = new DiagramGasCompartment(e.id, e.label, e.modelComponents, this.pixiApp)
             this.diagramComponents[e.id].sprite.x = e.layout.xSprite * this.stage.width
@@ -335,6 +356,9 @@ export default {
             break
           case 'BloodConnector':
             this.diagramConnectors[e.id] = new DiagramBloodConnector(e.id, e.label, e.dbcFrom, e.dbcTo, e.modelComponents, this.pixiApp)
+            break
+          case 'LymphConnector':
+            this.diagramConnectors[e.id] = new DiagramLymphConnector(e.id, e.label, e.dbcFrom, e.dbcTo, e.modelComponents, this.pixiApp)
             break
           case 'Valve':
             this.diagramConnectors[e.id] = new DiagramValve(e.id, e.label, e.dbcFrom, e.dbcTo, e.modelComponents, this.pixiApp)
