@@ -1175,10 +1175,11 @@
          "is_enabled":true,
          "vol":0.005654058574009633,
          "vol_u":0.00113603,
-         "el_min":4398,
-         "el_max":0,
+         "el_min":50000,
+         "el_max":8000,
          "el_k1":0,
-         "el_k2":0
+         "el_k2":0,
+         "freq":0.08333
       },
       {
          "name":"LYMPHANGION_VCS",
@@ -1400,7 +1401,7 @@
          "type":"component",
          "subtype":"LymphModel",
          "is_enabled":true,
-         "flowPercentage": 10
+         "flowPercentage": 0.15
       },
       {
          "name":"Uterus",
