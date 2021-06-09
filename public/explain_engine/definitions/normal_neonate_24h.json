@@ -1201,8 +1201,8 @@
          "type":"component",
          "subtype":"ECG",
          "is_enabled":true,
-         "heart_rate":129.06237956694608,
-         "heart_rate_ref": 160,
+         "heart_rate": 120,
+         "heart_rate_ref": 120,
          "venticular_escape_rate":40,
          "rhythm_type":0,
          "pq_time":0.1,
@@ -1256,9 +1256,7 @@
          "subtype":"Heart",
          "is_enabled":true,
          "activation_delay":0,
-         "a": 1.55,
-         "n": 2,
-         "m": 20
+         "a": 2
       },
       {
          "name":"Lungs",
@@ -1399,7 +1397,7 @@
          "description":"",
          "type":"component",
          "subtype":"LymphModel",
-         "is_enabled":true,
+         "is_enabled":false,
          "flowPercentage": 10
       },
       {

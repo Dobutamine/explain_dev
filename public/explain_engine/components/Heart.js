@@ -88,7 +88,9 @@ class Heart {
 
     // varying elastance activation function of the atria
     if (ncc_atrial >= 0 && ncc_atrial < (atrial_duration / t)) {
-      this.aaf = Math.pow(Math.sin(Math.PI * (ncc_atrial / atrial_duration) * t), 2);
+      const s = Math.sin((ncc_atrial * t * Math.PI) /  atrial_duration)
+      this.aaf = Math.sin((ncc_atrial * t * Math.PI) / atrial_duration - s / this.a)
+
     } else {
       this.aaf = 0;
     }
@@ -97,16 +99,8 @@ class Heart {
 
 
     if (ncc_ventricular >= 0 && ncc_ventricular < (ventricular_duration / t)) {
-      this.vaf = Math.pow(Math.sin(Math.PI * (ncc_ventricular / ventricular_duration) * t), 2);
-      // E[t] = a (1 - Exp[-n*t])*(1 - (t/t0)^m/(1 + (t/t0)^m))
-      // a = 1.8; t0 = 0.5; n = 2; m = 20; (T = 1)
-
-      // const _t = ncc_ventricular * t
-      // const t0 = ventricular_duration
-      // const f1 = Math.exp(-this.n * _t)
-      // const f2 = Math.pow(_t / t0, this.m)
-
-      // this.vaf = this.a * (1 - f1) * ((1 - f2)/ (1 + f2)) 
+      const s = Math.sin((ncc_ventricular * t * Math.PI) /  ventricular_duration)
+      this.vaf = Math.sin((ncc_ventricular * t * Math.PI) / ventricular_duration - s / this.a)
       
     } else {
       this.vaf = 0
