@@ -1,10 +1,10 @@
 [package]
-name = "rust_engine"
+name = "rust_explain_engine"
 authors = ["dobutamine <tim.antonius@outlook.com>"]
 version = "0.1.0"
-description = "rust_engine"
+description = "wasm test project"
 license-file = "LICENSE.txt"
-repository = "https://github.com/dobutamine/rust_engine/"
+repository = "https://github.com/dobutamine/cargo/"
 edition = "2018"
 
 
@@ -32,4 +32,3 @@ console_error_panic_hook = { version = "0.1.6", optional = true }
 [profile.release]
 # Tell `rustc` to optimize for small code size.
 opt-level = "s"
-

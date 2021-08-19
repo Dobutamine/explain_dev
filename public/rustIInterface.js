@@ -1,5 +1,5 @@
 /* eslint-disable */
-import init, { greet } from './rust_engine/pkg/rust_engine'
+import init, { greet } from './pkg/rust_explain_engine'
 
 export class RustInterface {
   constructor () {

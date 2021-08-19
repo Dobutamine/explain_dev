@@ -1,6 +1,5 @@
-/public/rust_engine/target
-/public/rust_engine/Cargo.lock
-Cargo.lock
+/public/target
+/public/Cargo.lock
 
 .DS_Store
 .thumbs.db
