@@ -67,9 +67,10 @@ module.exports = function (/* ctx */) {
           enforce: 'pre',
           test: /\.(js|vue)$/,
           loader: 'eslint-loader',
-          exclude: /node_modules/
+          // disable eslint for the node_modules and the pkg folders
+          exclude: [/node_modules/, /pkg/]
         }, {
-          // add the webpack loader for the import.meta function
+          // add the webpack loader for the import.meta function requiered by the wasm-pack module
           test: /\.(js|vue)$/,
           loader: '@open-wc/webpack-import-meta-loader'
         })
