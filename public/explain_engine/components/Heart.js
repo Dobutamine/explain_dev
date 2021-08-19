@@ -135,6 +135,8 @@ class Heart {
     this._model.components.LA.el_act = this.aaf;
     this._model.components.LV.el_act = this.vaf;
 
+    this._model.components.COR.el_act = this.vaf;
+
   }
 
   strokeWorkCalculations () {

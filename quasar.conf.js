@@ -18,7 +18,7 @@ module.exports = function (/* ctx */) {
     // app boot file (/src/boot)
     // --> boot files are part of "main.js"
     // https://quasar.dev/quasar-cli/boot-files
-    boot: ['model'
+    boot: ['model', 'rust'
 
     ],
 
@@ -68,6 +68,10 @@ module.exports = function (/* ctx */) {
           test: /\.(js|vue)$/,
           loader: 'eslint-loader',
           exclude: /node_modules/
+        }, {
+          // add the webpack loader for the import.meta function
+          test: /\.(js|vue)$/,
+          loader: '@open-wc/webpack-import-meta-loader'
         })
       }
     },

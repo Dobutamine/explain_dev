@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@arction/lcjs": "^2.1.0",
+    "@open-wc/webpack-import-meta-loader": "^0.4.7",
     "@quasar/extras": "^1.0.0",
     "core-js": "^3.6.5",
     "jsoneditor": "^9.2.0",

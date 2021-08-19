@@ -6,15 +6,26 @@ class Resuscitation {
     this._comp_counter  = 0;
     this._resp_counter  = 0;
     this.compressions  = 0;
+    this.o2_inflow = 0;
   }
 
   modelStep() {
     if (this.is_enabled) {
+      this._model.components.Breathing.spont_breathing_enabled = false
       this.modelCycle();
     }
   }
 
   modelCycle() {
+
+    // inflow o2 
+    // real flow = in l/sec
+    // to2 = mmol/l
+    this.o2_inflow = this._model.components.AA_COR.real_flow * this._model.components.AA.to2  // mmol/sec
+  
+    this._model.components.ECG.heart_rate = this.set_hr
+    this._model.components.ECG.venticular_escape_rate = 0
+
     // Model sinus function
     let a_sinus  = (this.p_max + this.p_min) / 2; // average
     let b_sinus  = (this.p_max - this.p_min) / 2; // amplitude

@@ -1507,7 +1507,8 @@
          "ratio_resp": 1,  
          "p_max": 40,
          "p_min":0,
-         "f_comp":2
+         "f_comp":2,
+         "set_hr": 30
       },
       {
          "name":"HeartLungInteraction",
