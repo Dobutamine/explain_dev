@@ -4,7 +4,7 @@ use web_sys::console;
 #[wasm_bindgen(start)]
 pub fn run() {
     // run some code when the wasm module starts
-    console::log_1(&"Rust/WASM module initialized and started correctly".into());
+    console::log_1(&"Rust model code initialized correctly".into());
 }
 
 #[wasm_bindgen]
