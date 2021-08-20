@@ -1,18 +1,19 @@
 /* eslint-disable */
 
-import init, { start_model, stop_model, calculate_model, fastforward_model, load_modeldefinition} from './pkg/rust_explain_engine'
+import init, { start_model, stop_model, calculate_model, fastforward_model, load_modeldefinition } from './pkg/rust_explain_engine'
 
 export class RustInterface {
-  constructor () {
-    init()
+  initialized = false
 
-    // init().then(() => {
-    //   console.log('WASM module is initialized!')
-    // })
+  constructor () {
+    init().then(() => {
+      this.initialized = true
+      console.log('JS-Rust interface intialized.')
+    })
   }
 
-  loadModeldefinition () {
-    load_modeldefinition()
+  loadModeldefinition (json) {
+    load_modeldefinition(json)
   }
 
   startModel () {

@@ -52,7 +52,8 @@
                   { label: 'chart1', value: 'modelchart' },
                   { label: 'chart2', value: 'modelchart2' },
                   { label: 'trends', value: 'trends' },
-                  { label: 'diagram', value: 'diagram' }]"
+                  { label: 'diagram', value: 'diagram' },
+                  { label: 'rust', value: 'rust'}]"
                 />
             </div>
           <!-- <q-scroll-area v-bind:style="{ height: height + 'px'}"> -->
@@ -84,6 +85,10 @@
              <q-carousel-slide name="trends">
                 <TrendMonitoring></TrendMonitoring>
                 <XYChart chartId="100"></XYChart>
+                <Controller></Controller>
+             </q-carousel-slide>
+             <q-carousel-slide name="rust">
+               <RustTest></RustTest>
                 <Controller></Controller>
              </q-carousel-slide>
           </q-carousel>
@@ -146,6 +151,7 @@ import Monitoring from 'components/Monitoring'
 import Log from 'components/Log'
 import Inspector from 'components/Inspector'
 import TrendMonitoring from 'components/TrendMonitoring'
+import RustTest from 'components/RustTest'
 
 export default {
   name: 'PageIndex',
@@ -161,12 +167,13 @@ export default {
     Monitoring,
     Log,
     Inspector,
-    TrendMonitoring
+    TrendMonitoring,
+    RustTest
   },
   data () {
     return {
       height: '2024px',
-      slide: 'modelchart',
+      slide: 'rust',
       slide_left: 'props',
       slide_right: 'monitor'
     }
