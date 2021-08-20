@@ -6,7 +6,12 @@ export class RustInterface {
   initialized = false
 
   constructor () {
-    init().then(() => {
+    // locate the wasm packages
+    const url = (import.meta.url).replace('/public', '/pkg')
+
+    // build the url string to find the wasm packages
+    const input = new URL('rust_explain_engine_bg.wasm', url);
+    init(input).then(() => {
       this.initialized = true
       console.log('JS-Rust interface intialized.')
     })

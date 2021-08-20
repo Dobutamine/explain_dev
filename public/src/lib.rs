@@ -9,9 +9,9 @@ pub fn run() {
 
 #[wasm_bindgen]
 pub fn load_modeldefinition(model_definition: String) {
-    console::log_1(&"Rust model definition loaded".into());
-    let new_model = model_definition;
-    console::log_1(&new_model.into())
+    console::log_1(&"Rust model definition loaded!!!!!!!".into());
+    // let new_model = model_definition;
+    // console::log_1(&new_model.into())
 }
 
 #[wasm_bindgen]
