@@ -1,5 +1,6 @@
 use wasm_bindgen::prelude::*;
 use web_sys::console;
+use serde_json::Value;
 
 #[wasm_bindgen(start)]
 pub fn run() {
@@ -8,10 +9,9 @@ pub fn run() {
 }
 
 #[wasm_bindgen]
-pub fn load_modeldefinition(model_definition: String) {
+pub fn load_modeldefinition(model_definition: &str) {
     console::log_1(&"Rust model definition loaded!!!!!!!".into());
-    // let new_model = model_definition;
-    // console::log_1(&new_model.into())
+    let v: Value = serde_json::from_str(model_definition).unwrap();
 }
 
 #[wasm_bindgen]

@@ -16,6 +16,7 @@ class BloodCompartment {
     this.pres = 0;
     this.pres_recoil = 0;
     this.pres_ext = 0;
+    this.pres_av = 0;
     this.pres_cont = 0;
 
     // elastances
@@ -62,7 +63,7 @@ class BloodCompartment {
     this.pres_recoil = (this.vol - (this.vol_u * this.vol_u_fac)) * this.el
 
     // return the sum of all the pressures
-    return (this.pres_recoil + this.pres_ext + this.pres_cont);
+    return (this.pres_recoil + this.pres_ext + this.pres_cont + this.pres_av);
 
   }
 

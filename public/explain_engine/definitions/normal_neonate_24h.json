@@ -1354,7 +1354,7 @@
          "description":"",
          "type":"component",
          "subtype":"AVinteraction",
-         "is_enabled":false
+         "is_enabled":true
       },
       {
          "name":"Brain",
