@@ -164,12 +164,13 @@ class Datalogger {
       if (this._model.components[key].name != 'Monitor') {
         let newObj = Object.assign({}, this._model.components[key]);
         // delete the associated referenced model (creates a circular copy) and other objects
-        if (newObj.initialized) {
+        if (newObj.initialized && this._model.components[key].name != "Blood" && this._model.components[key].name != "Gas") {
           newObj.initialized = false
         }
-        if (newObj._initialized) {
+        if (newObj._initialized && this._model.components[key].name != "Blood" && this._model.components[key].name != "Gas") {
           newObj._initialized = false
         }
+
         delete newObj._model;
         delete newObj.model;
         delete newObj.comp1;
