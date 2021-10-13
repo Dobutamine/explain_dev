@@ -53,7 +53,7 @@
                   { label: 'chart2', value: 'modelchart2' },
                   { label: 'trends', value: 'trends' },
                   { label: 'diagram', value: 'diagram' },
-                  { label: 'rust', value: 'rust'}]"
+                  { label: 'logs', value: 'log' }]"
                 />
             </div>
           <!-- <q-scroll-area v-bind:style="{ height: height + 'px'}"> -->
@@ -87,10 +87,13 @@
                 <XYChart chartId="100"></XYChart>
                 <Controller></Controller>
              </q-carousel-slide>
-             <q-carousel-slide name="rust">
+             <q-carousel-slide name="json">
+              <JSONEditor></JSONEditor>
+            </q-carousel-slide>
+             <!-- <q-carousel-slide name="rust">
                <RustTest></RustTest>
                 <Controller></Controller>
-             </q-carousel-slide>
+             </q-carousel-slide> -->
           </q-carousel>
           <!-- </q-scroll-area> -->
         </div>
@@ -151,7 +154,8 @@ import Monitoring from 'components/Monitoring'
 import Log from 'components/Log'
 import Inspector from 'components/Inspector'
 import TrendMonitoring from 'components/TrendMonitoring'
-import RustTest from 'components/RustTest'
+import JSONEditor from 'components/JSONEditor'
+// import RustTest from 'components/RustTest'
 
 export default {
   name: 'PageIndex',
@@ -168,12 +172,13 @@ export default {
     Log,
     Inspector,
     TrendMonitoring,
-    RustTest
+    JSONEditor
+    // RustTest
   },
   data () {
     return {
       height: '2024px',
-      slide: 'rust',
+      slide: 'modelchart',
       slide_left: 'props',
       slide_right: 'monitor'
     }

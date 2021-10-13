@@ -3,8 +3,6 @@
 class AVinteraction {
   constructor(_model) {
     this._model = _model;
-
-    this.transfer_pressure = 0
   }
 
   modelStep() {

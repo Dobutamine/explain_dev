@@ -1201,8 +1201,8 @@
          "type":"component",
          "subtype":"ECG",
          "is_enabled":true,
-         "heart_rate": 120,
-         "heart_rate_ref": 120,
+         "heart_rate": 140,
+         "heart_rate_ref": 140,
          "venticular_escape_rate":40,
          "rhythm_type":0,
          "pq_time":0.1,
@@ -1314,7 +1314,7 @@
          "op_lungvol":0.05,
          "sa_lungvol":0.06,
          "th_map":30,
-         "op_map":45,
+         "op_map":51,
          "sa_map":70,
          "th_po2":5.25,
          "op_po2":52.5,
@@ -1578,6 +1578,38 @@
             {
                "label": "rvo",
                "model": "RV_APC",
+               "prop": "real_flow",
+               "decimals": 0,
+               "multiplier": 1000,
+               "type": "flow"
+            },
+            {
+               "label": "vci_flow",
+               "model": "VCII_RA",
+               "prop": "real_flow",
+               "decimals": 0,
+               "multiplier": 1000,
+               "type": "flow"
+            },
+            {
+               "label": "vcs_flow",
+               "model": "VCS_RA",
+               "prop": "real_flow",
+               "decimals": 0,
+               "multiplier": 1000,
+               "type": "flow"
+            },
+            {
+               "label": "ofo_flow",
+               "model": "SHUNT_OFO",
+               "prop": "real_flow",
+               "decimals": 0,
+               "multiplier": 1000,
+               "type": "flow"
+            },
+            {
+               "label": "pda_flow",
+               "model": "SHUNT_DA",
                "prop": "real_flow",
                "decimals": 0,
                "multiplier": 1000,

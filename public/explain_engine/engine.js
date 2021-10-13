@@ -183,7 +183,7 @@ const initModel = function (model_definition) {
     initializeMonitors(model_definition)
 
     // import and initialize the datalogger
-    datalogger = new Datalogger(current_model);
+    datalogger = new Datalogger(current_model, model_definition);
 
     // import and initialize the interventions engine
     interventions = new Interventions(current_model);
@@ -249,6 +249,7 @@ const initializeMonitors = function (model_definition) {
 }
 // initialize the  model components from the model_definition file
 const initializeComponents = function (model_definition) {
+  console.log(model_definition)
 
   // initialize all the components by first finding out what components are configures in the JSON file
   let componentTypes = []
@@ -279,6 +280,7 @@ const initializeComponents = function (model_definition) {
   model_definition["components"].forEach(component => {
     if (component.subtype !== ""){
       // instantiate the component type and add a reference to the current model!
+      console.log(component.subtype)
       let newComponent = new componentTypes[component.subtype](current_model)
       // add the properties
       Object.keys(component).forEach(function (prop) {
@@ -290,6 +292,9 @@ const initializeComponents = function (model_definition) {
   })
 }
 
+const saveModel = function() {
+
+}
 // load and initialize a new model from a json model definition object
 const loadModel = function (json_model_definition) {
   current_model = {}

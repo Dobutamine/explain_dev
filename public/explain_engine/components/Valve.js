@@ -16,7 +16,7 @@ class Valve {
     this.r_k1_fac = 1;
     this.r_k2_fac = 1;
 
-    this._initialized = false
+    this.initialized = false
 
   }
 
@@ -42,7 +42,7 @@ class Valve {
 
   modelStep() {
 
-    if (!this._initialized) {
+    if (!this.initialized) {
 
       // find the current model stepsize
       this.t = this._model["modeling_stepsize"]
@@ -52,7 +52,7 @@ class Valve {
       this.comp2 = this._model.components[this.comp_to];
 
       // flag that the connector is initialized
-      this._initialized = true
+      this.initialized = true
     }
     
     if (this.is_enabled && !this.no_flow) {

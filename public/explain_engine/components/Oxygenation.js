@@ -47,14 +47,14 @@ calcOxygenation = function(to2, po2) {
 };
 
 Odc = function(po2) {
-  let a = 1.04 * (7.4 - ph_odc) + 0.005 * be_odc + 0.07 * (dpg_odc - 5.0);
-  let b = 0.055 * (temp_odc + 273.15 - 310.15);
-  let y0 = 1.875; // was 1.875
-  let x0 = 1.875 + a + b; // was 1.946
-  let h0 = 3.5 + a; // was 3.5
-  let k = 0.5343;
+  let a = 1.04 * (7.4 - ph_odc) + (0.005 * be_odc) + 0.07 * (dpg_odc - 5.0) + 0.055 * (temp_odc + 273.15 - 310.15)
+    
+  let x0 = 1.946 + a
+  let y0 = + 1.875
+  let h0 = 3.5 + a; 
+  
   let x = Math.log(po2, Math.E);
-  let y = x - x0 + h0 * Math.tanh(k * (x - x0)) + y0;
+  let y = x - x0 + h0 * Math.tanh(0.5343 * (x - x0)) + y0;
 
   return 1.0 / (Math.pow(Math.E, -y) + 1.0);
 };

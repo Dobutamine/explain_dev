@@ -1,9 +1,10 @@
 /* eslint-disable */
 
 class Datalogger {
-  constructor(_model) {
+  constructor(_model, _model_definition) {
     // declare a reference to the global model which is injected in this class
     this._model = _model;
+    this._model_definition = _model_definition
 
     this._datalogger_timer = 0;
     this.update_interval = 0.015
@@ -153,68 +154,41 @@ class Datalogger {
       weight: this._model.weight,
       model_time_total: this._model.model_time_total,
       modeling_stepsize: this._model.modeling_stepsize,
-      blood_compartment_definitions: [],
-      blood_connector_definitions: [],
-      valve_definitions: [],
-      gas_compartment_definitions: [],
-      gas_connector_definitions: [],
-      container_definitions: [],
-      diffusor_definitions: [],
-      exchanger_definitions: []
-      
+      components: [],
+      globals: [],
+      monitoring: []
     }
+    // copy all model components
     Object.keys(this._model.components).forEach((key) => {
-
       // shallow copy the component
-      let newObj = Object.assign({}, this._model.components[key]);
-
-      // delete the associated referenced model (creates a circular copy) and other objects
-      delete newObj._model;
-      delete newObj.model;
-      delete newObj.comp1;
-      delete newObj.comp2;
-      delete newObj._calcBloodMixing;
-      delete newObj._calcEnergyUse;
-      delete newObj.calcAcidbaseFromTCO2
-      delete newObj.calcPlasmaNetcharge
-  
-
-      
-
-      switch (newObj.subtype) {
-        case "blood_compartment":
-          model_state.blood_compartment_definitions.push(newObj)
-          break
-        case "pump":
-          model_state.blood_compartment_definitions.push(newObj)
-          break
-        case "blood_connector":
-          model_state.blood_connector_definitions.push(newObj)
-          break
-        case "valve":
-          model_state.valve_definitions.push(newObj)
-          break
-        case "gas_compartment":
-          model_state.gas_compartment_definitions.push(newObj)
-          break
-        case "gas_connector":
-          model_state.gas_connector_definitions.push(newObj)
-          break
-        case "container":
-          model_state.container_definitions.push(newObj)
-          break
-        case "diffusor":
-          model_state.diffusor_definitions.push(newObj)
-          break
-        case "exchanger":
-          model_state.exchanger_definitions.push(newObj)
-          break
-        case "":
-          model_state[newObj.name] = newObj;
-          break
+      if (this._model.components[key].name != 'Monitor') {
+        let newObj = Object.assign({}, this._model.components[key]);
+        // delete the associated referenced model (creates a circular copy) and other objects
+        if (newObj.initialized) {
+          newObj.initialized = false
+        }
+        if (newObj._initialized) {
+          newObj._initialized = false
+        }
+        delete newObj._model;
+        delete newObj.model;
+        delete newObj.comp1;
+        delete newObj.comp2;
+        delete newObj._calcBloodMixing;
+        delete newObj._calcEnergyUse;
+        delete newObj.calcAcidbaseFromTCO2
+        delete newObj.calcPlasmaNetcharge
+    
+        model_state.components.push(newObj);
       }
+      
     });
+
+    model_state.globals = this._model_definition.globals
+    model_state.monitoring = this._model_definition.monitoring
+
     sendMessage("mes", null, null, [`datalogger build a json representation of the current model state`]);
+    console.log(model_state)
     return model_state
   }
 

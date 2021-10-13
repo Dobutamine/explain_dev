@@ -18,7 +18,7 @@ class GasConnector {
     this.r_k1_fac = 1;
     this.r_k2_fac = 1;
 
-    this._initialized = false
+    this.initialized = false
   }
 
   calcResistance(pres1, pres2) {
@@ -40,13 +40,13 @@ class GasConnector {
 
 
   modelStep() {
-    if (!this._initialized) {
+    if (!this.initialized) {
       this.t = this._model["modeling_stepsize"]
       // find a reference to the compartments which are connected by this connector
       this.comp1 = this._model.components[this.comp_from];
       this.comp2 = this._model.components[this.comp_to];
 
-      this._initialized = true
+      this.initialized = true
     }
 
 
